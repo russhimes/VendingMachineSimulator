@@ -1,0 +1,56 @@
+FileReader - reads file and creates Snacks.
+Log - logs snack sales.
+
+Snack (abstract) - contains price, name, and string to print on purchase.
+	child classes - because each needs to display a different string.
+		Chip
+		Candy
+		Drink
+		Gum
+
+Balance - does money stuff
+
+VendingMachine - contains list of Snacks and a Balance object. And has some way of selecting snack and updating count of snacks in each slot
+
+VendingMachineCLI - driver and runs through menus.
+
+*********************************************************
+VendingMachineCLI 	-> has VendingMachine
+			-> has FileReader
+			-> has Menu (already provided)
+			-> has method run() (Already provided but needs to be updated)
+
+VendingMachine 		-> has Snacks (list or map?)
+			-> has Log
+			-> has Balance
+
+Snack 			-> has Constructor(String slot, String name, BigDecimal price. String type???) 
+				- constructor initializes amount available to 5
+			-> has String Name
+			-> has BigDecimal price
+			-> has String Message
+			-> has String Slot
+			-> has int numAvailable
+			-> has method decrement which decreases numAvailable by 1.
+				-> Has child classes for each type.
+
+FileReader		-> has method "load()" which
+				1) Opens "vendingmachine.csv"
+				2) reads each line
+				3) Splits line based on "|"
+				4) Creates a Snack(slot, name, price)
+				5) needs to create a different kind of snack based on what the type (Chips, candy, drink, gum) is.
+				6) returns List<Snack>???
+
+Log			-> has property filename.
+			-> has method "writeLog()" which writes log file.
+
+Balance			-> has BigDecimal balance
+			-> has method updateBalance(BigDecimal price)
+			-> has method String returnChange() which:
+				 1) Calculates int quarters, int dimes, int nickels
+				 2) Returns a String that says: "Your change is __ quarters, __ dimes, __ nickels."
+					Could instead return an array.
+
+
+
